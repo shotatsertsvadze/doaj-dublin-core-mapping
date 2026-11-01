@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+.DS_Store
+# OpenRefine project backups stay out of the public repository
+*.tar.gz

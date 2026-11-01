@@ -1,0 +1,132 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Title",
+    "expression": "grel:if(isBlank(value), null, value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:title",
+    "columnInsertIndex": 1,
+    "description": "Create column dcterms:title at index 1 based on column Title using expression grel:if(isBlank(value), null, value.trim())"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Authors",
+    "expression": "grel:if(isBlank(value), null, value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:creator",
+    "columnInsertIndex": 3,
+    "description": "Create column dcterms:creator at index 3 based on column Authors using expression grel:if(isBlank(value), null, value.trim())"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Authors",
+    "expression": "grel:if(\n  isBlank(value),\n  \"[]\",\n  \"[\" + forEach(\n    value.split(\"|\"),\n    author,\n    author.trim().jsonize()\n  ).join(\",\") + \"]\"\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "creators_json",
+    "columnInsertIndex": 3,
+    "description": "Create column creators_json at index 3 based on column Authors using expression grel:if(\n  isBlank(value),\n  \"[]\",\n  \"[\" + forEach(\n    value.split(\"|\"),\n    author,\n    author.trim().jsonize()\n  ).join(\",\") + \"]\"\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DOI",
+    "expression": "grel:if(\n  isBlank(value),\n  null,\n  \"https://doi.org/\" + value.trim()\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:identifier",
+    "columnInsertIndex": 6,
+    "description": "Create column dcterms:identifier at index 6 based on column DOI using expression grel:if(\n  isBlank(value),\n  null,\n  \"https://doi.org/\" + value.trim()\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Language_normalized",
+    "expression": "grel:if(isBlank(value), null, value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:language",
+    "columnInsertIndex": 11,
+    "description": "Create column dcterms:language at index 11 based on column Language_normalized using expression grel:if(isBlank(value), null, value.trim())"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Publisher",
+    "expression": "grel:if(isBlank(value), null, value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:publisher",
+    "columnInsertIndex": 15,
+    "description": "Create column dcterms:publisher at index 15 based on column Publisher using expression grel:if(isBlank(value), null, value.trim())"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Subjects",
+    "expression": "grel:if(\n  isBlank(value),\n  \"[]\",\n  \"[\" + forEach(\n    value.split(\"|\"),\n    subject,\n    subject.trim().jsonize()\n  ).join(\",\") + \"]\"\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "subjects_json",
+    "columnInsertIndex": 13,
+    "description": "Create column subjects_json at index 13 based on column Subjects using expression grel:if(\n  isBlank(value),\n  \"[]\",\n  \"[\" + forEach(\n    value.split(\"|\"),\n    subject,\n    subject.trim().jsonize()\n  ).join(\",\") + \"]\"\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Date",
+    "expression": "grel:if(isBlank(value), null, value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:date",
+    "columnInsertIndex": 9,
+    "description": "Create column dcterms:date at index 9 based on column Date using expression grel:if(isBlank(value), null, value.trim())"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "ISSNs",
+    "expression": "grel:if(\n  isBlank(value),\n  \"[]\",\n  \"[\" + forEach(\n    value.split(\"|\"),\n    issn,\n    issn.trim().jsonize()\n  ).join(\",\") + \"]\"\n)",
+    "onError": "set-to-blank",
+    "newColumnName": "issns_json",
+    "columnInsertIndex": 16,
+    "description": "Create column issns_json at index 16 based on column ISSNs using expression grel:if(\n  isBlank(value),\n  \"[]\",\n  \"[\" + forEach(\n    value.split(\"|\"),\n    issn,\n    issn.trim().jsonize()\n  ).join(\",\") + \"]\"\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Licence",
+    "expression": "grel:if(isBlank(value), null, value.trim())",
+    "onError": "set-to-blank",
+    "newColumnName": "dcterms:license",
+    "columnInsertIndex": 21,
+    "description": "Create column dcterms:license at index 21 based on column Licence using expression grel:if(isBlank(value), null, value.trim())"
+  }
+]
